@@ -20,7 +20,7 @@ android {
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "au.edu.jcu.assessment.utilityapp"
+        applicationId = "au.edu.jcu.zhangfan.stockpulse"
         minSdk = 26
         targetSdk = 36
         versionCode = 1

@@ -10,6 +10,7 @@ data class StockQuote(
     val priceUsd: Double,
     val changeUsd: Double,
     val changePercent: Double,
+    val previousCloseUsd: Double,
     /** Closing prices in chronological order, used to draw the sparkline. Empty if unavailable. */
     val sparkline: List<Double> = emptyList(),
 )

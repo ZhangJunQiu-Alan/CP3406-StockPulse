@@ -90,6 +90,7 @@ class NetworkStockRepository(
             priceUsd = quote.currentPrice,
             changeUsd = quote.change ?: 0.0,
             changePercent = quote.changePercent ?: 0.0,
+            previousCloseUsd = quote.previousClose,
         )
     }
 

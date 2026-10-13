@@ -39,9 +39,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
+import androidx.compose.ui.text.input.OffsetMapping
+import androidx.compose.ui.text.input.TransformedText
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -282,9 +286,13 @@ private fun AddSymbolField(
     OutlinedTextField(
         value = input,
         onValueChange = {
-            input = it.uppercase()
+            // Don't rewrite the text here (e.g. uppercase()): changing it while the keyboard is
+            // still composing makes fast typing drop characters. It is shown in capitals by
+            // [UppercaseTransformation] and normalised by the ViewModel instead.
+            input = it
             onInputChanged()
         },
+        visualTransformation = UppercaseTransformation,
         label = { Text(stringResource(R.string.settings_add_symbol_label)) },
         placeholder = { Text(stringResource(R.string.settings_add_symbol_placeholder)) },
         singleLine = true,
@@ -307,6 +315,12 @@ private fun AddSymbolField(
         },
         modifier = Modifier.fillMaxWidth(),
     )
+}
+
+/** Displays text in capitals without changing the underlying value (same length, so identity offsets). */
+private object UppercaseTransformation : VisualTransformation {
+    override fun filter(text: AnnotatedString) =
+        TransformedText(AnnotatedString(text.text.uppercase()), OffsetMapping.Identity)
 }
 
 @Composable

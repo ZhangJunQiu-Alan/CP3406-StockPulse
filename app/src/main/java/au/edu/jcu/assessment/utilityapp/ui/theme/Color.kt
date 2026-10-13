@@ -11,6 +11,9 @@ val Slate40 = Color(0xFF565F71)
 val Slate80 = Color(0xFFBEC6DC)
 val Amber40 = Color(0xFF825500)
 val Amber80 = Color(0xFFFFB951)
+val AmberContainer90 = Color(0xFFFFDDB3)
+val OnAmberContainer10 = Color(0xFF291800)
+val AmberContainer30 = Color(0xFF633F00)
 
 // Market colours (gain = green, loss = red) chosen to keep 4.5:1 contrast on their containers.
 val GainLight = Color(0xFF1B7F3B)

@@ -16,6 +16,8 @@ private val DarkColorScheme = darkColorScheme(
     primaryContainer = NavyContainer30,
     secondary = Slate80,
     tertiary = Amber80,
+    tertiaryContainer = AmberContainer30,
+    onTertiaryContainer = AmberContainer90,
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -23,6 +25,8 @@ private val LightColorScheme = lightColorScheme(
     primaryContainer = NavyContainer90,
     secondary = Slate40,
     tertiary = Amber40,
+    tertiaryContainer = AmberContainer90,
+    onTertiaryContainer = OnAmberContainer10,
 )
 
 /**
