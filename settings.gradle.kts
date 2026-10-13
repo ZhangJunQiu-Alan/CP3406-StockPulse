@@ -22,5 +22,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "MobileTech_UtilityApp"
+rootProject.name = "StockPulse"
 include(":app")
