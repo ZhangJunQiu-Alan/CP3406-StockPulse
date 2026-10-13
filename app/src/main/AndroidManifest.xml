@@ -12,11 +12,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MobileTech_UtilityApp">
+        android:theme="@style/Theme.StockPulse">
         <activity
             android:name="au.edu.jcu.assessment.utilityapp.MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.MobileTech_UtilityApp">
+            android:theme="@style/Theme.StockPulse">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

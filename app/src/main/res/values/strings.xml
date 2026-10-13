@@ -1,3 +1,70 @@
 <resources>
-    <string name="app_name">MobileTech Utility App</string>
+    <string name="app_name">Stock Pulse</string>
+
+    <!-- Navigation -->
+    <string name="tab_watchlist">Watchlist</string>
+    <string name="tab_settings">Settings</string>
+    <string name="action_refresh">Refresh prices</string>
+
+    <!-- Market status banner -->
+    <string name="market_open">Market open</string>
+    <string name="market_pre">Pre-market</string>
+    <string name="market_post">After hours</string>
+    <string name="market_closed">Market closed</string>
+    <string name="market_holiday">Closed · %1$s</string>
+    <string name="market_closes_in">Closes in %1$s · %2$s</string>
+    <string name="market_opens_in">Opens in %1$s · %2$s</string>
+
+    <!-- Summary card -->
+    <string name="summary_average_label">Average move today</string>
+    <string name="summary_up_down">▲ %1$d up · ▼ %2$d down</string>
+    <string name="summary_best_worst">Best %1$s %2$s · Worst %3$s %4$s</string>
+    <string name="summary_updated">Updated %1$s</string>
+    <string name="summary_fx_rate">US$1 = S$%1$s</string>
+    <string name="summary_currency_fallback">SGD rate unavailable – showing USD</string>
+
+    <!-- Big move alert -->
+    <string name="big_move_title">Big moves today (±%1$s%% or more)</string>
+
+    <!-- Stock row accessibility -->
+    <string name="stock_row_description">%1$s, %2$s. Price %3$s. %4$s</string>
+    <string name="trend_up_description">Up %1$s today</string>
+    <string name="trend_down_description">Down %1$s today</string>
+    <string name="trend_flat_description">Unchanged today</string>
+
+    <!-- Status and errors -->
+    <string name="loading_prices">Loading prices…</string>
+    <string name="empty_watchlist_title">Your watchlist is empty</string>
+    <string name="empty_watchlist_body">Add up to %1$d US stocks on the Settings tab.</string>
+    <string name="unknown_symbols">Not found: %1$s</string>
+    <string name="action_retry">Retry</string>
+    <string name="error_network">No internet connection. Showing the last prices received.</string>
+    <string name="error_rate_limited">API rate limit reached. Prices will update on the next refresh.</string>
+    <string name="error_invalid_key">API key rejected. Check the keys in the .env file.</string>
+    <string name="error_unknown">Couldn\'t update prices. Please try again.</string>
+    <string name="data_disclaimer">Quotes: Finnhub · Charts: Twelve Data · FX: Frankfurter (ECB). Prices may be delayed. Not financial advice.</string>
+
+    <!-- Settings -->
+    <string name="settings_watchlist_title">Watchlist (%1$d/%2$d)</string>
+    <string name="settings_watchlist_body">Tap a symbol to remove it.</string>
+    <string name="settings_remove_symbol">Remove %1$s</string>
+    <string name="settings_add_symbol_label">Add US stock symbol</string>
+    <string name="settings_add_symbol_placeholder">e.g. AMZN</string>
+    <string name="settings_add_symbol_action">Add symbol</string>
+    <string name="settings_add_checking">Checking symbol…</string>
+    <string name="settings_add_success">Added %1$s (%2$s)</string>
+    <string name="settings_add_invalid">Use a US ticker like AAPL or BRK.B</string>
+    <string name="settings_add_duplicate">Already on your watchlist</string>
+    <string name="settings_add_full">Watchlist is full – remove a symbol first</string>
+    <string name="settings_add_not_found">No US-listed stock with that symbol</string>
+    <string name="settings_add_network">Couldn\'t check the symbol. Are you online?</string>
+    <string name="settings_currency_title">Display currency</string>
+    <string name="settings_currency_body">US prices are converted at the latest ECB rate.</string>
+    <string name="settings_chart_title">Sparkline range</string>
+    <string name="settings_sort_title">Sort watchlist by</string>
+    <string name="settings_alert_title">Big-move alert</string>
+    <string name="settings_alert_body">Highlight stocks moving ±%1$s%% or more today.</string>
+    <string name="settings_refresh_title">Auto-refresh</string>
+    <string name="settings_refresh_body">Refreshing pauses while the app is in the background.</string>
+    <string name="settings_not_persistent">Settings reset when the app is closed.</string>
 </resources>
