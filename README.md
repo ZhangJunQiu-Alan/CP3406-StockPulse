@@ -166,7 +166,3 @@ There are 26 JVM unit tests. None need the network, because they use a `FakeStoc
 - Prices may be delayed, and the app is **not financial advice**.
 - Market holidays are shown live from Finnhub, but the "next open" countdown doesn't skip future holidays.
 - Settings are not persisted (as allowed by the spec). `SettingsRepository` is an interface, so a DataStore version could be added later.
-
-## Acknowledgement of AI assistance
-Generative AI (Claude) was used while building this project to help with Kotlin/Compose code and API exploration,
-as permitted for this assessment. Its use is declared in the submitted *Declaration of AI-Generated Material*.
