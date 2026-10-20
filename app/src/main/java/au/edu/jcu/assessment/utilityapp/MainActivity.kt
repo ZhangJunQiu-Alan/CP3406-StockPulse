@@ -5,6 +5,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.annotation.StringRes
+import androidx.compose.animation.Crossfade
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
@@ -95,9 +97,16 @@ fun UtilityApp(
         }
     ) { innerPadding ->
         val contentModifier = Modifier.padding(innerPadding)
-        when (selectedTab) {
-            AppTab.UTILITY -> UtilityScreen(viewModel = viewModel, modifier = contentModifier)
-            AppTab.SETTINGS -> SettingsScreen(viewModel = viewModel, modifier = contentModifier)
+        Crossfade(
+            targetState = selectedTab,
+            animationSpec = tween(220),
+            modifier = contentModifier,
+            label = "Main tab transition",
+        ) { tab ->
+            when (tab) {
+                AppTab.UTILITY -> UtilityScreen(viewModel = viewModel)
+                AppTab.SETTINGS -> SettingsScreen(viewModel = viewModel)
+            }
         }
     }
 }

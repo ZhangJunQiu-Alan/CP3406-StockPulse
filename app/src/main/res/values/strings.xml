@@ -45,6 +45,8 @@
     <string name="data_disclaimer">Quotes: Finnhub · Charts: Twelve Data · FX: Frankfurter (ECB). Prices may be delayed. Not financial advice.</string>
 
     <!-- Settings -->
+    <string name="settings_intro_title">Make it your market</string>
+    <string name="settings_intro_body">Choose what you follow and how you see it.</string>
     <string name="settings_watchlist_title">Watchlist (%1$d/%2$d)</string>
     <string name="settings_watchlist_body">Tap a symbol to remove it.</string>
     <string name="settings_remove_symbol">Remove %1$s</string>

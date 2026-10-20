@@ -58,6 +58,7 @@ import au.edu.jcu.assessment.utilityapp.data.model.SortOrder
 import au.edu.jcu.assessment.utilityapp.ui.AddSymbolError
 import au.edu.jcu.assessment.utilityapp.ui.AddSymbolState
 import au.edu.jcu.assessment.utilityapp.ui.StockViewModel
+import au.edu.jcu.assessment.utilityapp.ui.components.SettingsIntro
 import au.edu.jcu.assessment.utilityapp.ui.format.StockFormatters
 import au.edu.jcu.assessment.utilityapp.ui.theme.StockPulseTheme
 import kotlin.math.roundToInt
@@ -107,6 +108,7 @@ fun SettingsScreenContent(
             .verticalScroll(rememberScrollState())
             .padding(16.dp),
     ) {
+        SettingsIntro()
         SettingsSection(
             title = stringResource(
                 R.string.settings_watchlist_title,

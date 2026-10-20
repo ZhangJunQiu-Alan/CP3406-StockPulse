@@ -1,11 +1,13 @@
 package au.edu.jcu.assessment.utilityapp.ui.components
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.Button
@@ -18,6 +20,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.liveRegion
 import androidx.compose.ui.semantics.semantics
@@ -47,8 +50,18 @@ fun LoadingState(modifier: Modifier = Modifier) {
         verticalArrangement = Arrangement.spacedBy(16.dp, Alignment.CenterVertically),
         modifier = modifier.fillMaxSize(),
     ) {
-        CircularProgressIndicator()
-        Text(stringResource(R.string.loading_prices), style = MaterialTheme.typography.bodyMedium)
+        Image(
+            painter = painterResource(R.drawable.illustration_market),
+            contentDescription = null,
+            modifier = Modifier.size(width = 160.dp, height = 120.dp),
+        )
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
+        ) {
+            CircularProgressIndicator(modifier = Modifier.size(20.dp), strokeWidth = 2.dp)
+            Text(stringResource(R.string.loading_prices), style = MaterialTheme.typography.bodyMedium)
+        }
     }
 }
 
@@ -109,6 +122,11 @@ fun EmptyWatchlist(modifier: Modifier = Modifier) {
             .fillMaxWidth()
             .padding(vertical = 32.dp),
     ) {
+        Image(
+            painter = painterResource(R.drawable.illustration_watchlist),
+            contentDescription = null,
+            modifier = Modifier.size(width = 180.dp, height = 144.dp),
+        )
         Text(
             text = stringResource(R.string.empty_watchlist_title),
             style = MaterialTheme.typography.titleMedium,

@@ -1,15 +1,23 @@
 package au.edu.jcu.assessment.utilityapp.ui.components
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -36,8 +44,11 @@ fun WatchlistSummaryCard(
 ) {
     val summary = content.summary
     val averageTrend = Trend.fromChange(summary.averageChangePercent)
+    val showIllustration = LocalConfiguration.current.screenWidthDp >= 360 &&
+        LocalDensity.current.fontScale <= 1.3f
 
     Card(
+        shape = RoundedCornerShape(24.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
         modifier = modifier.fillMaxWidth(),
     ) {
@@ -45,21 +56,39 @@ fun WatchlistSummaryCard(
             verticalArrangement = Arrangement.spacedBy(4.dp),
             modifier = Modifier.padding(20.dp),
         ) {
-            Text(
-                text = stringResource(R.string.summary_average_label),
-                style = MaterialTheme.typography.labelLarge,
-                color = MaterialTheme.colorScheme.onPrimaryContainer,
-            )
-            Text(
-                text = StockFormatters.signedPercent(summary.averageChangePercent),
-                style = MaterialTheme.typography.displaySmall,
-                fontWeight = FontWeight.Bold,
-                color = if (averageTrend == Trend.FLAT) {
-                    MaterialTheme.colorScheme.onPrimaryContainer
-                } else {
-                    averageTrend.contentColor()
-                },
-            )
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+                modifier = Modifier.fillMaxWidth(),
+            ) {
+                Column(
+                    verticalArrangement = Arrangement.spacedBy(4.dp),
+                    modifier = Modifier.weight(1f),
+                ) {
+                    Text(
+                        text = stringResource(R.string.summary_average_label),
+                        style = MaterialTheme.typography.labelLarge,
+                        color = MaterialTheme.colorScheme.onPrimaryContainer,
+                    )
+                    Text(
+                        text = StockFormatters.signedPercent(summary.averageChangePercent),
+                        style = MaterialTheme.typography.displaySmall,
+                        fontWeight = FontWeight.Bold,
+                        color = if (averageTrend == Trend.FLAT) {
+                            MaterialTheme.colorScheme.onPrimaryContainer
+                        } else {
+                            averageTrend.contentColor()
+                        },
+                    )
+                }
+                if (showIllustration) {
+                    Image(
+                        painter = painterResource(R.drawable.illustration_market),
+                        contentDescription = null,
+                        modifier = Modifier.size(width = 80.dp, height = 60.dp),
+                    )
+                }
+            }
             Text(
                 text = stringResource(R.string.summary_up_down, summary.upCount, summary.downCount),
                 style = MaterialTheme.typography.titleMedium,

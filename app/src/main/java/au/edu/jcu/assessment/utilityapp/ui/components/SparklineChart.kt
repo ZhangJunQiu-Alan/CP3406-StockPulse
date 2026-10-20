@@ -1,9 +1,13 @@
 package au.edu.jcu.assessment.utilityapp.ui.components
 
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -11,6 +15,7 @@ import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.drawscope.clipRect
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
@@ -27,6 +32,12 @@ fun SparklineChart(
     if (points.size < 2) {
         Spacer(modifier) // keep the row layout stable when no chart data is available
         return
+    }
+
+    val reveal = remember { Animatable(0f) }
+    LaunchedEffect(points) {
+        reveal.snapTo(0f)
+        reveal.animateTo(1f, animationSpec = tween(600))
     }
 
     Canvas(modifier = modifier) {
@@ -51,15 +62,17 @@ fun SparklineChart(
             close()
         }
 
-        drawPath(
-            path = area,
-            brush = Brush.verticalGradient(listOf(lineColor.copy(alpha = 0.25f), Color.Transparent)),
-        )
-        drawPath(
-            path = line,
-            color = lineColor,
-            style = Stroke(width = strokeWidth, cap = StrokeCap.Round, join = StrokeJoin.Round),
-        )
+        clipRect(right = size.width * reveal.value) {
+            drawPath(
+                path = area,
+                brush = Brush.verticalGradient(listOf(lineColor.copy(alpha = 0.25f), Color.Transparent)),
+            )
+            drawPath(
+                path = line,
+                color = lineColor,
+                style = Stroke(width = strokeWidth, cap = StrokeCap.Round, join = StrokeJoin.Round),
+            )
+        }
     }
 }
 
